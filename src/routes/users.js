@@ -9,9 +9,7 @@ UsersRoute.get("/", (req, res) => {
 });
 
 UsersRoute.get("/add", (req, res) => {
-        query_runner("SELECT * FROM author")
-                .then(([rows]) => res.render("users", {users: rows, page_title: "Users"}))
-                .catch((err) => res.json(query_error(err.message)));
+        res.status(200).render("addUser");
 });
 
 module.exports = UsersRoute;
