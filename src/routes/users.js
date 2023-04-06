@@ -8,4 +8,10 @@ UsersRoute.get("/", (req, res) => {
                 .catch((err) => res.json(query_error(err.message)));
 });
 
+UsersRoute.get("/add", (req, res) => {
+        query_runner("SELECT * FROM author")
+                .then(([rows]) => res.render("users", {users: rows, page_title: "Users"}))
+                .catch((err) => res.json(query_error(err.message)));
+});
+
 module.exports = UsersRoute;
